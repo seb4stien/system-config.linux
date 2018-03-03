@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo Fetching latest roles versions
+ansible-galaxy install -r requirements.yml --force
