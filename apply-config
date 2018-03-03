@@ -1,0 +1,8 @@
+#!/bin/bash
+
+TS_START=$(date +%s)
+
+echo Applying configuration
+time sudo ansible-playbook -i localhost, -c local playbook.yml
+
+echo Took $(($(date +%s) - $TS_START)) seconds
