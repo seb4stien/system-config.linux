@@ -1,3 +1,9 @@
 #!/bin/bash
 
-apt-get install ansible git gnupg wget curl
+apt-get install \
+  ansible \
+  curl \
+  git \
+  gnupg \
+  screen \
+  wget
