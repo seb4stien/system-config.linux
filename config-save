@@ -1,0 +1,24 @@
+#!/bin/bash
+
+ME=$(hostname)
+TS=$(date +%Y%m%d)
+
+TMPDIR="/tmp/"
+BACKUPDIR="/tmp/"
+SYSCONFDIR=$(dirname $0)
+
+
+BACKUP=${BACKUPDIR}/backup-${ME}.${TS}.backup.tgz.gpg
+
+if [ "${SYSCONFDIR}" == "." ];
+then
+	echo "Must be called with absolute path."
+	exit 1
+fi
+
+tar czf - ${SYSCONFDIR} /etc/ | gpg -r 1104326B03598030D64CC39EEA076B1ED3FDDBC0 --encrypt > ${BACKUP}
+
+if [ ! -s "${BACKUP}" ];
+then
+	echo Poblem with backup
+fi
