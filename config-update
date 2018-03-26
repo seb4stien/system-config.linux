@@ -1,4 +1,12 @@
 #!/bin/bash
 
 echo Fetching latest roles versions
-ansible-galaxy install -r requirements.yml --force
+for role in roles/*;
+do
+	echo $role
+	cd $role
+	git pull
+	cd -
+done
+
+#ansible-galaxy install -r requirements.yml --force
