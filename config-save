@@ -16,7 +16,22 @@ then
 	exit 1
 fi
 
-tar czf - ${SYSCONFDIR} /etc/ | gpg -r 1104326B03598030D64CC39EEA076B1ED3FDDBC0 --encrypt > ${BACKUP}
+for role in roles/*;
+do
+	echo "Checking $role"
+	cd $role
+	if [ -n "$(git status --porcelain)" ];
+	then
+		echo "  $role is not clean"
+		git status --porcelain
+		exit 1
+	else
+		echo "  ok"
+	fi
+	cd - > /dev/null
+done
+
+sudo tar czf - ${SYSCONFDIR} /etc/ | gpg -r 1104326B03598030D64CC39EEA076B1ED3FDDBC0 --encrypt > ${BACKUP}
 
 if [ ! -s "${BACKUP}" ];
 then
