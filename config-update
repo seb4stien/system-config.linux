@@ -9,6 +9,18 @@ do
 	cd -
 done
 
+echo Fetchin required roles
+for role in $(cat playbook.yml | grep " role:" | sed -e "s/.*ansible/ansible/");
+do
+	echo $role is required
+	if [ -e "roles/$role" ];
+	then
+		echo "  present"
+	else
+		git clone https://github.com/seb4stien/$role.git roles/$role
+	fi
+done
+
 echo Self updating
 git pull
 
