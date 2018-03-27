@@ -9,4 +9,7 @@ do
 	cd -
 done
 
+echo Self updating
+git pull
+
 #ansible-galaxy install -r requirements.yml --force
