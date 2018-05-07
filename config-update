@@ -1,10 +1,10 @@
 #!/bin/bash
 
 echo Fetching latest roles versions
-for role in roles/*;
+for role in $(ls -1 roles/);
 do
 	echo $role
-	cd $role
+	cd roles/$role
 	git pull
 	cd -
 done
