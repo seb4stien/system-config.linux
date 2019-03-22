@@ -10,7 +10,7 @@ do
 done
 
 echo Fetchin required roles
-for role in $(cat playbook.yml | grep " role:" | sed -e "s/.*ansible/ansible/");
+for role in $(cat playbook.yml | grep -v "#" | grep " role:" | sed -e "s/.*ansible/ansible/");
 do
 	echo $role is required
 	if [ -e "roles/$role" ];
