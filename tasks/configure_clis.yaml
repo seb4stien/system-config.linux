@@ -1,0 +1,40 @@
+- name: Install basic tools
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - screen
+    - vim
+    - tree
+
+- name: Default editor
+  become: true
+  alternatives:
+    name: editor
+    path: /usr/bin/vim
+
+- name: Default editor
+  alternatives:
+    name: editor
+    path: /usr/bin/vim
+
+- name: Configuring git aliases
+  ansible.builtin.blockinfile:
+    path: "{{ user_home }}/.bashrc"
+    block: |
+      alias ga='git add'
+      alias gs='git status'
+      alias gc='git commit'
+      alias gd='git diff'
+      alias gr='git fetch --all && git rebase'
+      alias gP='git push'
+
+- name: Configuring ls aliases
+  ansible.builtin.lineinfile:
+    path: "{{ user_home }}/.bashrc"
+    line: "{{ item }}"
+  loop:
+    - alias ll='ls -alF'
+    - alias la='ls -A'
+    - alias l='ls -CF'

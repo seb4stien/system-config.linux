@@ -3,6 +3,6 @@
 TS_START=$(date +%s)
 
 echo Applying configuration
-time ansible-playbook -i localhost, -c local playbook.yml
+time ansible-playbook -i inventory.yaml -c local playbook.yml
 
 echo Took $(($(date +%s) - $TS_START)) seconds

@@ -1,0 +1,8 @@
+- hosts: localhost
+  vars:
+    user_home: /home/{{ user }}
+  gather_facts: no
+  tasks:
+    - import_tasks: tasks/configure_clis.yaml
+    - import_tasks: tasks/configure_guis.yaml
+#    - import_tasks: tasks/configure_perso.yaml

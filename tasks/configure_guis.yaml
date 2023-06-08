@@ -1,0 +1,7 @@
+- name: Install graphic apps I use a lot
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - terminator

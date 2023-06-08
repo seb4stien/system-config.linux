@@ -1,6 +1,10 @@
 #!/bin/bash
 
-apt-get install \
+sudo apt update
+
+sudo apt dist-upgrade
+
+sudo apt-get install \
   ansible \
   curl \
   git \
