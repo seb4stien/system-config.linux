@@ -3,3 +3,9 @@
     key: "/org/gnome/desktop/peripherals/touchpad/natural-scroll"
     value: "false"
     state: present
+
+- name: Configure terminal shortcut
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/terminal"
+    value: "['<Super>t']"
+    state: present
