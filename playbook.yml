@@ -6,4 +6,5 @@
     - import_tasks: tasks/configure_clis.yaml
     - import_tasks: tasks/configure_guis.yaml
     - import_tasks: tasks/configure_python.yaml
+    - import_tasks: tasks/configure_gnome.yaml
 #    - import_tasks: tasks/configure_perso.yaml

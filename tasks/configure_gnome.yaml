@@ -1,0 +1,5 @@
+- name: Configure natural scrolling for touchpad
+  community.general.dconf:
+    key: "/org/gnome/desktop/peripherals/touchpad/natural-scroll"
+    value: "false"
+    state: present
