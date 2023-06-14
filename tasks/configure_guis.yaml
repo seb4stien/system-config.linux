@@ -7,3 +7,8 @@
     - terminator
     - gedit
     - dconf-editor
+
+- name: Remove terminator title bar
+  ansible.builtin.copy:
+    src: files/config/terminator/config
+    dest: "{{ user_home }}/.config/terminator/config"
