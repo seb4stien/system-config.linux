@@ -6,3 +6,4 @@
   with_items:
     - terminator
     - gedit
+    - dconf-editor
