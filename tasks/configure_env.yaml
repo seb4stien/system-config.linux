@@ -1,0 +1,8 @@
+- name: Create my standard directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0700'
+  loop:
+  - "{{ user_home }}/bin"
+  - "{{ user_home }}/tmp"

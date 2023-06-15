@@ -4,10 +4,14 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - screen
-    - vim
-    - tree
     - autojump
+    - curl
+    - git
+    - mailutils
+    - screen
+    - tree
+    - vim
+    - wget
 
 - name: Default editor
   become: true

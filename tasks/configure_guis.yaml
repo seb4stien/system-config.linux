@@ -4,9 +4,12 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - terminator
-    - gedit
     - dconf-editor
+    - gedit
+    - gnome-shell-extensions
+    - gnome-tweaks
+    - terminator
+    - wmctrl
 
 - name: Remove terminator title bar
   ansible.builtin.copy:
