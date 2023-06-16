@@ -44,3 +44,21 @@
     - alias ll='ls -alF'
     - alias la='ls -A'
     - alias l='ls -CF'
+
+- name: Set git username
+  git_config:
+    name: user.name
+    scope: global
+    value: "{{ user_name }}"
+
+- name: Set git email
+  git_config:
+    name: user.email
+    scope: global
+    value: "{{ user_mail }}"
+
+- name: Set git pull strategy
+  git_config:
+    name: pull.rebase
+    scope: global
+    value: true

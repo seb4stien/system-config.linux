@@ -1,0 +1,7 @@
+- name: Install packages for personal usage
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libfuse2 # for Ledger live
