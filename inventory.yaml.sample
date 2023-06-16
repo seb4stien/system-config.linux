@@ -6,3 +6,4 @@ all:
     user_name: Sebastien Georget
     user_mail:
     user_home: /home/{{ user }}
+    private: false
