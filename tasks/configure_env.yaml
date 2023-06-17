@@ -8,3 +8,10 @@
   - "{{ user_home }}/perso/src"
   - "{{ user_home }}/src"
   - "{{ user_home }}/tmp"
+
+- name: Create useful symlinks
+  ansible.builtin.file:
+    path: "{{ user_home }}/bin/sc"
+    src: "{{ user_home }}/system-config/files/home/bin/sc"
+    state: link
+    mode: '0700'
