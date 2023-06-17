@@ -1,12 +1,11 @@
 #!/bin/bash
 
 cd ~/system-config
-D=$(git diff)
-if [ "$D" == "" ]; then
+if git status | grep "nothing to commit, working tree clean" ; then
 	git pull
 	git push
 	exit
 fi
 
 echo "Some changes need to be commited"
-git diff
+git status
