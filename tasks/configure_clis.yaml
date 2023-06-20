@@ -62,3 +62,9 @@
     name: pull.rebase
     scope: global
     value: true
+
+- name: Set default master branch name
+  git_config:
+    name: init.defaultBranch
+    scope: global
+    value: main
