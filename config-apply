@@ -3,6 +3,11 @@
 TS_START=$(date +%s)
 
 echo Applying configuration
-time ansible-playbook -i inventory.yaml -c local playbook.yml
+ansible-playbook -i inventory.yaml -c local playbook.yml
+RES=$?
 
 echo Took $(($(date +%s) - $TS_START)) seconds
+
+if [ "$RES" == "0" ]; then
+	git rev-parse HEAD > .latest-success
+fi

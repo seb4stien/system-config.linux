@@ -4,8 +4,14 @@ cd ~/system-config
 if git status | grep "nothing to commit, working tree clean" ; then
 	git pull
 	git push
+	current=$(git rev-parse HEAD)
+	latest=$(cat .latest-success)
+	if [ "$current" != "$latest" ]; then
+		./config-apply
+	fi
 	exit
 fi
 
 echo "Some changes need to be commited"
 git status
+exit
