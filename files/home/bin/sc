@@ -7,6 +7,7 @@ if git status | grep "nothing to commit, working tree clean" ; then
 	current=$(git rev-parse HEAD)
 	latest=$(cat .latest-success)
 	if [ "$current" != "$latest" ]; then
+		sudo echo "Sudo activated"
 		./config-apply
 	fi
 	exit
