@@ -7,6 +7,7 @@
     - autojump
     - curl
     - git
+    - gawk  # for git-summary
     - mailutils
     - screen
     - tree
@@ -34,6 +35,7 @@
       alias gd='git diff'
       alias gr='git fetch --all && git rebase'
       alias gP='git push'
+      alias GS='git-summary ~/perso/src/; git-summary ~/src/'
       . /usr/share/autojump/autojump.sh
 
 - name: Configuring ls aliases
@@ -68,3 +70,17 @@
     name: init.defaultBranch
     scope: global
     value: main
+
+- name: Install git summary
+  ansible.builtin.git:
+    repo: https://github.com/MirkoLedda/git-summary.git
+    dest: "{{ user_home }}/share/git-summary"
+    clone: yes
+    update: yes
+
+- name: Link git summary
+  ansible.builtin.file:
+    path: "{{ user_home }}/bin/git-summary"
+    src: "{{ user_home }}/share/git-summary/git-summary"
+    state: link
+    mode: '0700'

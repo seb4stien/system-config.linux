@@ -6,6 +6,7 @@
   loop:
   - "{{ user_home }}/bin"
   - "{{ user_home }}/perso/src"
+  - "{{ user_home }}/share"
   - "{{ user_home }}/src"
   - "{{ user_home }}/tmp"
 
