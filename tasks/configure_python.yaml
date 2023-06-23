@@ -1,9 +1,8 @@
 - name: Install packages for python
   become: true
   apt:
-    name: "{{ item }}"
     state: present
-  with_items:
+    name:
     - python3
     - python3-pip
     - python3-poetry

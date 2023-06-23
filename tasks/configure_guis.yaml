@@ -11,12 +11,11 @@
     state: present
     filename: google-chrome
 
-- name: Install graphic apps I use a lot
+- name: Install GUIs
   become: true
   apt:
-    name: "{{ item }}"
     state: present
-  with_items:
+    name:
     - dconf-editor
     - gedit
     - google-chrome-stable
