@@ -12,3 +12,8 @@
   ansible.builtin.lineinfile:
     path: "{{ user_home }}/.bashrc"
     line: PIPENV_VENV_IN_PROJECT=1
+
+- name: Remove previous virtualenvs
+  ansible.builtin.file:
+    path: "{{ user_home }}/.local/share/virtualenvs"
+    state: absent
