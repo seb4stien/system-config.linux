@@ -2,7 +2,8 @@
 
 TS_START=$(date +%s)
 
-echo Applying configuration
+echo Getting sudo access
+sudo echo Applying configuration
 ansible-playbook -i inventory.yaml -c local playbook.yml
 RES=$?
 
