@@ -35,7 +35,7 @@
       alias gd='git diff'
       alias gr='git fetch --all && git rebase'
       alias gP='git push'
-      alias GS='git-summary ~/perso/src/; git-summary ~/src/'
+      alias GS='git-summary ~/system-config; git-summary ~/perso/src/; git-summary ~/src/'
       . /usr/share/autojump/autojump.sh
 
 - name: Configuring ls aliases
