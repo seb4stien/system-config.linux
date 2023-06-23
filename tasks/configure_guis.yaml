@@ -17,6 +17,7 @@
     state: present
     name:
     - dconf-editor
+    - deja-dup
     - gedit
     - google-chrome-stable
     - gnome-shell-extensions
