@@ -10,3 +10,5 @@
     - import_tasks: tasks/configure_gnome.yaml
     - import_tasks: tasks/configure_private.yaml
       when: private
+    - import_tasks: tasks/configure_games.yaml
+      when: private
