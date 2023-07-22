@@ -7,10 +7,11 @@
     - curl
     - git
     - gawk  # for git-summary
+    - gddrescue # rescude disks & cards
     - mailutils
     - screen
     - rmlint
-    - testdisk
+    - testdisk  # rescude disks & cards
     - tree
     - vim
     - wget
