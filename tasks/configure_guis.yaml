@@ -24,6 +24,7 @@
     - gnome-shell-extensions
     - gnome-tweaks
     - terminator
+    - v4l-utils  # to configure my webcam
     - wmctrl
 
 - name: Remove terminator title bar
