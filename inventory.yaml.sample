@@ -7,3 +7,5 @@ all:
     user_mail:
     user_home: /home/{{ user }}
     private: false
+    desktop: false
+    games: false

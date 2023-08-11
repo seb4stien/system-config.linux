@@ -6,9 +6,11 @@
     - import_tasks: tasks/configure_env.yaml
     - import_tasks: tasks/configure_clis.yaml
     - import_tasks: tasks/configure_guis.yaml
+      when: desktop
     - import_tasks: tasks/configure_python.yaml
     - import_tasks: tasks/configure_gnome.yaml
+      when: desktop
     - import_tasks: tasks/configure_private.yaml
       when: private
     - import_tasks: tasks/configure_games.yaml
-      when: private
+      when: games
