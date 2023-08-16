@@ -12,7 +12,12 @@
 
 - name: Create useful symlinks
   ansible.builtin.file:
-    path: "{{ user_home }}/bin/sc"
-    src: "{{ user_home }}/system-config/files/home/bin/sc"
+    path: "{{ user_home }}/bin/system-config-apply"
+    src: "{{ user_home }}/system-config/files/home/bin/system-config-apply"
     state: link
     mode: '0700'
+
+- name: Remove previous versions
+  ansible.builtin.file:
+    path: "{{ user_home }}/bin/sc"
+    state: absent

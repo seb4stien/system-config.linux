@@ -39,6 +39,7 @@
       alias gr='git fetch --all && git rebase'
       alias gP='git push'
       alias GS='git-summary ~/system-config; git-summary ~/perso/src/; git-summary ~/src/'
+      alias SC='~/bin/system-config-apply'
       . /usr/share/autojump/autojump.sh
 
 - name: Configuring ls aliases
