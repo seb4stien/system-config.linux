@@ -27,6 +27,11 @@
     - v4l-utils  # to configure my webcam
     - wmctrl
 
+- name: Create terminator config folder
+  ansible.builtin.file:
+    path: "{{ user_home }}/.config/terminator/"
+    state: directory
+
 - name: Remove terminator title bar
   ansible.builtin.copy:
     src: files/home/config/terminator/config
