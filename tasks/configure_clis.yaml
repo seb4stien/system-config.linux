@@ -5,6 +5,7 @@
     name:
     - autojump
     - curl
+    - iftop
     - git
     - gawk  # for git-summary
     - gddrescue # rescude disks & cards
