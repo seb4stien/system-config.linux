@@ -23,6 +23,7 @@
     - google-chrome-stable
     - gnome-shell-extensions
     - gnome-tweaks
+    - remmina
     - terminator
     - v4l-utils  # to configure my webcam
     - wmctrl
