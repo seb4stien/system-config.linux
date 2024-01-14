@@ -3,6 +3,7 @@
   apt:
     state: present
     name:
+    - apt-file
     - autojump
     - curl
     - iftop
