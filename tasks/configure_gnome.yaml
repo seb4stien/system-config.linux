@@ -9,3 +9,9 @@
     key: "/org/gnome/settings-daemon/plugins/media-keys/terminal"
     value: "['<Super>t']"
     state: present
+
+- name: Configure nautilus shortcut
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/home"
+    value: "['<Super>e']"
+    state: present
