@@ -16,6 +16,7 @@
   apt:
     state: present
     name:
+    - autokey-gtk
     - dconf-editor
     - deja-dup
     - gedit
@@ -27,6 +28,7 @@
     - terminator
     - v4l-utils  # to configure my webcam
     - wmctrl
+    - xclip
 
 - name: Create terminator config folder
   ansible.builtin.file:
