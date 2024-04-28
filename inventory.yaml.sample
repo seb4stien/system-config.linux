@@ -9,3 +9,4 @@ all:
     private: false
     desktop: false
     games: false
+    remote_access: false

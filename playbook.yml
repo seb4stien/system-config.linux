@@ -2,6 +2,11 @@
   vars:
     user_home: /home/{{ user }}
   gather_facts: no
+  handlers:
+    - name: restart ssh
+      service:
+        name: ssh
+        state: restarted 
   tasks:
     - import_tasks: tasks/configure_env.yaml
     - import_tasks: tasks/configure_clis.yaml
@@ -14,3 +19,5 @@
       when: private
     - import_tasks: tasks/configure_games.yaml
       when: games
+    - import_tasks: tasks/configure_remote_access.yaml
+      when: remote_access 
