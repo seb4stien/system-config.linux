@@ -8,6 +8,8 @@
         name: ssh
         state: restarted 
   tasks:
+    - import_tasks: tasks/configure_lightweight.yaml
+      when: lightweight
     - import_tasks: tasks/configure_env.yaml
     - import_tasks: tasks/configure_clis.yaml
     - import_tasks: tasks/configure_guis.yaml

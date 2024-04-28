@@ -1,0 +1,7 @@
+- name: Remove libreoffice
+  become: true
+  apt:
+    state: absent
+    purge: true
+    name:
+    - libreoffice-*

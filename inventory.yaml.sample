@@ -10,3 +10,4 @@ all:
     desktop: false
     games: false
     remote_access: false
+    lightweight: false
