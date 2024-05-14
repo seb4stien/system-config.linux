@@ -11,6 +11,7 @@
     - git
     - gawk  # for git-summary
     - gddrescue # rescude disks & cards
+    - lvm2
     - mailutils
     - screen
     - rmlint
