@@ -1,0 +1,16 @@
+#!/bin/bash
+
+CURRENT=$(uname -r)
+
+UNUSED=$(dpkg -l | awk '{print $2}' | egrep "^linux-headers|^linux-image|^linux-modules" | grep -v $CURRENT)
+
+echo "Current = $CURRENT"
+echo "To be removed: $UNUSED"
+if [ -z "$UNUSED" ]; then
+	echo "Nothing to remove"
+	exit
+fi
+
+echo "Anything to continue, ctrl-c to quit"
+read
+apt remove --purge $UNUSED
