@@ -8,7 +8,7 @@ if [ ! -e "$BACKUP_LIST" ]; then
 fi
 
 
-BACKUP="$HOME/system-config/backup/backup-conf-latest.tgz"
+BACKUP="$HOME/system-config/backup/${HOSTNAME}-backup-conf-latest.tgz"
 rm -f $BACKUP
 echo Will save the following files to $BACKUP
 cat $BACKUP_LIST
