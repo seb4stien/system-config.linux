@@ -1,0 +1,16 @@
+#!/bin/bash
+
+BACKUP_LIST=$HOME/.backup
+
+if [ ! -e "$BACKUP_LIST" ]; then
+	echo "List the file to backup in $BACKUP_LIST"
+	exit 1
+fi
+
+
+BACKUP="$HOME/system-config/backup/backup-conf-latest.tgz"
+rm -f $BACKUP
+echo Will save the following files to $BACKUP
+cat $BACKUP_LIST
+
+sudo tar czf $BACKUP --files-from $BACKUP_LIST

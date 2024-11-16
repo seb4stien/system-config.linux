@@ -1,3 +1,4 @@
 *.retry
 inventory.yaml
 .latest-success
+backup/*
