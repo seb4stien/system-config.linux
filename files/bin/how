@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -z "$OPENAI_API_KEY" ]; then
+	echo "OPENAI_API_KEY" is missing
+	exit 1
+fi
+
+req="How $* ?"
+echo "$req"
+
+ENDPOINT="https://api.openai.com/v1/chat/completions"
+
+echo '{ "model": "gpt-4o-mini", "messages": [{"role": "user", "content": "'$req'"}] }' > /tmp/payload.json
+
+curl $ENDPOINT \
+-s \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $OPENAI_API_KEY" -d @/tmp/payload.json | jq -r .choices[0].message.content
