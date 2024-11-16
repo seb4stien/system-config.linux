@@ -1,6 +1,8 @@
 #!/bin/bash
 
+BACKUP_DIR="$HOME/system-config/backup/"
 BACKUP_LIST=$HOME/.backup
+REMOTE_BACKUP_LIST=$HOME/.backup.remote
 
 if [ ! -e "$BACKUP_LIST" ]; then
 	echo "List the file to backup in $BACKUP_LIST"
@@ -8,9 +10,17 @@ if [ ! -e "$BACKUP_LIST" ]; then
 fi
 
 
-BACKUP="$HOME/system-config/backup/${HOSTNAME}-backup-conf-latest.tgz"
+BACKUP="$BACKUP_DIR/${HOSTNAME}-backup-conf-latest.tgz"
 rm -f $BACKUP
 echo Will save the following files to $BACKUP
 cat $BACKUP_LIST
 
 sudo tar czf $BACKUP --files-from $BACKUP_LIST
+
+if [ -e "$REMOTE_BACKUP_LIST" ]; then
+	echo "Fetching remote backups"
+	for backup in $(cat $REMOTE_BACKUP_LIST); do
+		echo scp $backup $BACKUP_DIR/
+		scp $backup $BACKUP_DIR/
+	done
+fi
