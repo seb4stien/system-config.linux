@@ -10,17 +10,6 @@
   - "{{ user_home }}/src"
   - "{{ user_home }}/tmp"
 
-- name: Create symlinks to personal tooling
-  ansible.builtin.file:
-    path: "{{ user_home }}/bin/{{ item }}"
-    src: "{{ user_home }}/system-config/files/home/bin/{{ item }}"
-    state: link
-    mode: '0700'
-  loop:
-    - backup-conf
-    - how
-    - system-config-apply
-
 - name: Remove previous versions
   ansible.builtin.file:
     path: "{{ user_home }}/bin/sc"

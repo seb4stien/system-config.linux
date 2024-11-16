@@ -45,6 +45,7 @@
       alias GS='git-summary ~/system-config; git-summary ~/perso/src/; git-summary ~/src/'
       alias SC='~/bin/system-config-apply'
       . /usr/share/autojump/autojump.sh
+      export PATH=$PATH:$HOME/system-config/files/home/bin/
 
 - name: Configuring ls aliases
   ansible.builtin.lineinfile:
