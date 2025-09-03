@@ -5,3 +5,11 @@
     state: present
   with_items:
     - libfuse2 # for Ledger live
+
+- name: Create my standard directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0700'
+  loop:
+  - "{{ user_home }}/src"

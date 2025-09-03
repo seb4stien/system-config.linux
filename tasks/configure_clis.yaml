@@ -13,9 +13,11 @@
     - gddrescue # rescude disks & cards
     - lvm2
     - mailutils
+    - ripgrep
     - screen
     - rmlint
     - testdisk  # rescude disks & cards
+    - tmux
     - tree
     - unattended-upgrades
     - vim
@@ -42,7 +44,7 @@
       alias gd='git diff'
       alias gr='git fetch --all && git rebase'
       alias gP='git push'
-      alias GS='git-summary ~/system-config; git-summary ~/perso/src/; git-summary ~/src/'
+      alias GS='git-summary ~/system-config; git-summary ~/private/src/; git-summary ~/work/src/'
       alias SC='~/bin/system-config-apply'
       . /usr/share/autojump/autojump.sh
       export PATH=$PATH:$HOME/system-config/files/home/bin/

@@ -7,6 +7,7 @@ all:
     user_mail:
     user_home: /home/{{ user }}
     private: false
+    work: false
     desktop: false
     games: false
     remote_access: false
