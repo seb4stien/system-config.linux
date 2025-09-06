@@ -13,6 +13,7 @@
     - gddrescue # rescude disks & cards
     - lvm2
     - mailutils
+    - python-is-python3
     - ripgrep
     - screen
     - rmlint
@@ -41,6 +42,7 @@
       alias ga='git add'
       alias gs='git status'
       alias gc='git commit'
+      alias gcm='git checkout $(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)'
       alias gd='git diff'
       alias gr='git fetch --all && git rebase'
       alias gP='git push'
