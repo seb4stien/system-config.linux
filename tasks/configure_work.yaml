@@ -1,0 +1,20 @@
+- name: Create my standard directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0700'
+  loop:
+  - "{{ user_home }}/private/bin"
+  - "{{ user_home }}/private/etc"
+  - "{{ user_home }}/private/src"
+  - "{{ user_home }}/work/bin"
+  - "{{ user_home }}/work/etc"
+  - "{{ user_home }}/work/github"
+  - "{{ user_home }}/work/src"
+
+- name: Configuring bash preferences for work
+  ansible.builtin.blockinfile:
+    marker: "# {mark} WORK CONFIG"
+    path: "{{ user_home }}/.bashrc"
+    block: |
+      export PATH=$PATH:$HOME/work/bin:$HOME/private/bin

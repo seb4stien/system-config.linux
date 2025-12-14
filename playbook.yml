@@ -19,6 +19,8 @@
       when: desktop
     - import_tasks: tasks/configure_private.yaml
       when: private
+    - import_tasks: tasks/configure_work.yaml
+      when: work
     - import_tasks: tasks/configure_games.yaml
       when: games
     - import_tasks: tasks/configure_remote_access.yaml
