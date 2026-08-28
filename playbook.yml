@@ -1,27 +1,80 @@
-- hosts: localhost
-  vars:
-    user_home: /home/{{ user }}
-  gather_facts: no
+---
+- name: System Configuration (Privileged)
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: false
+  tags:
+    - system
+
   handlers:
     - name: restart ssh
       service:
         name: ssh
-        state: restarted 
+        state: restarted
+
   tasks:
-    - import_tasks: tasks/configure_lightweight.yaml
+    - name: System - Lightweight package cleanup
+      import_tasks: tasks/system/lightweight.yaml
       when: lightweight
-    - import_tasks: tasks/configure_env.yaml
-    - import_tasks: tasks/configure_clis.yaml
-    - import_tasks: tasks/configure_guis.yaml
+
+    - name: System - CLI packages
+      import_tasks: tasks/system/clis.yaml
+
+    - name: System - GUI packages and repositories
+      import_tasks: tasks/system/guis.yaml
       when: desktop
-    - import_tasks: tasks/configure_python.yaml
-    - import_tasks: tasks/configure_gnome.yaml
-      when: desktop
-    - import_tasks: tasks/configure_private.yaml
+
+    - name: System - Python packages
+      import_tasks: tasks/system/python.yaml
+
+    - name: System - Personal packages
+      import_tasks: tasks/system/private.yaml
       when: private
-    - import_tasks: tasks/configure_work.yaml
-      when: work
-    - import_tasks: tasks/configure_games.yaml
+
+    - name: System - Gaming packages
+      import_tasks: tasks/system/games.yaml
       when: games
-    - import_tasks: tasks/configure_remote_access.yaml
-      when: remote_access 
+
+    - name: System - Remote access & SSH configuration
+      import_tasks: tasks/system/remote_access.yaml
+      when: remote_access
+
+- name: User Environment Configuration (Unprivileged)
+  hosts: localhost
+  connection: local
+  become: false
+  gather_facts: false
+  vars:
+    user_home: "/home/{{ user }}"
+  tags:
+    - user
+
+  tasks:
+    - name: User - Standard directories
+      import_tasks: tasks/user/env.yaml
+
+    - name: User - CLI preferences & git settings
+      import_tasks: tasks/user/clis.yaml
+
+    - name: User - GUI application configuration
+      import_tasks: tasks/user/guis.yaml
+      when: desktop
+
+    - name: User - GNOME desktop settings
+      import_tasks: tasks/user/gnome.yaml
+      when: desktop
+
+    - name: User - Vim configuration
+      import_tasks: tasks/user/vim.yaml
+
+    - name: User - Python environment settings
+      import_tasks: tasks/user/python.yaml
+
+    - name: User - Private directories
+      import_tasks: tasks/user/private.yaml
+      when: private
+
+    - name: User - Work environment & preferences
+      import_tasks: tasks/user/work.yaml
+      when: work

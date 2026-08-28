@@ -1,0 +1,29 @@
+- name: Install CLIs
+  apt:
+    state: present
+    name:
+    - apt-file
+    - autojump
+    - curl
+    - iftop
+    - jshon
+    - git
+    - gawk  # for git-summary
+    - gddrescue # rescude disks & cards
+    - lvm2
+    - mailutils
+    - python-is-python3
+    - ripgrep
+    - screen
+    - rmlint
+    - testdisk  # rescude disks & cards
+    - tmux
+    - tree
+    - unattended-upgrades
+    - vim
+    - wget
+
+- name: Default editor
+  alternatives:
+    name: editor
+    path: /usr/bin/vim

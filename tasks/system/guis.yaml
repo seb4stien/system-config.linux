@@ -1,18 +1,15 @@
 - name: Add Apt signing key
-  become: true
   ansible.builtin.apt_key:
     url: "https://dl.google.com/linux/linux_signing_key.pub"
     state: present
 
 - name: Install Google chrome apt repository
-  become: true
   ansible.builtin.apt_repository:
     repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
     state: present
     filename: google-chrome
 
 - name: Install GUIs
-  become: true
   apt:
     state: present
     name:
@@ -29,13 +26,3 @@
     - v4l-utils  # to configure my webcam
     - wmctrl
     - xclip
-
-- name: Create terminator config folder
-  ansible.builtin.file:
-    path: "{{ user_home }}/.config/terminator/"
-    state: directory
-
-- name: Remove terminator title bar
-  ansible.builtin.copy:
-    src: files/home/config/terminator/config
-    dest: "{{ user_home }}/.config/terminator/config"

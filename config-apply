@@ -2,9 +2,31 @@
 
 TS_START=$(date +%s)
 
-echo Getting sudo access
-sudo echo Applying configuration
-ansible-playbook -i inventory.yaml -c local playbook.yml
+TAGS=""
+ARGS=()
+
+for arg in "$@"; do
+    case $arg in
+        --user|-u)
+            TAGS="--tags user"
+            ;;
+        --system|-s)
+            TAGS="--tags system"
+            ;;
+        *)
+            ARGS+=("$arg")
+            ;;
+    esac
+done
+
+if [ "$TAGS" == "--tags user" ]; then
+    echo "Applying user environment configuration (no sudo)..."
+else
+    echo "Getting sudo access..."
+    sudo echo "Applying configuration..."
+fi
+
+ansible-playbook -i inventory.yaml -c local playbook.yml $TAGS "${ARGS[@]}"
 RES=$?
 
 echo Took $(($(date +%s) - $TS_START)) seconds

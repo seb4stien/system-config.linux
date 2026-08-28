@@ -1,5 +1,4 @@
 - name: Install packages for gaming
-  become: true
   apt:
     name:
     - joystick
