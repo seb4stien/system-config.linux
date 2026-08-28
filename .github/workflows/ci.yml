@@ -1,0 +1,42 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  lint-and-validate:
+    name: Lint & Ansible Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Ansible and dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ansible pre-commit
+
+      - name: Run pre-commit hooks
+        run: |
+          pre-commit run --all-files
+
+      - name: Validate Ansible Playbook Syntax
+        run: |
+          ansible-playbook -i inventory.yaml -c local playbook.yml --syntax-check
+
+      - name: Test User Environment (Dry-run)
+        run: |
+          ./config-test --user

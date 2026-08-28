@@ -1,40 +1,3 @@
-- name: Install CLIs
-  become: true
-  apt:
-    state: present
-    name:
-    - apt-file
-    - autojump
-    - curl
-    - iftop
-    - jshon
-    - git
-    - gawk  # for git-summary
-    - gddrescue # rescude disks & cards
-    - lvm2
-    - mailutils
-    - python-is-python3
-    - ripgrep
-    - screen
-    - rmlint
-    - testdisk  # rescude disks & cards
-    - tmux
-    - tree
-    - unattended-upgrades
-    - vim
-    - wget
-
-- name: Default editor
-  become: true
-  alternatives:
-    name: editor
-    path: /usr/bin/vim
-
-- name: Default editor
-  alternatives:
-    name: editor
-    path: /usr/bin/vim
-
 - name: Configuring bash preferences
   ansible.builtin.blockinfile:
     path: "{{ user_home }}/.bashrc"
@@ -98,4 +61,5 @@
     path: "{{ user_home }}/bin/git-summary"
     src: "{{ user_home }}/share/git-summary/git-summary"
     state: link
+    force: true
     mode: '0700'

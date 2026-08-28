@@ -2,7 +2,29 @@
 
 TS_START=$(date +%s)
 
-echo Applying configuration
-time ansible-playbook -i inventory.yaml -c local playbook.yml --check $1
+TAGS=""
+ARGS=()
+
+for arg in "$@"; do
+    case $arg in
+        --user|-u)
+            TAGS="--tags user"
+            ;;
+        --system|-s)
+            TAGS="--tags system"
+            ;;
+        *)
+            ARGS+=("$arg")
+            ;;
+    esac
+done
+
+if [ "$TAGS" == "--tags user" ]; then
+    echo "Testing user environment configuration (dry-run)..."
+else
+    echo "Testing configuration (dry-run)..."
+fi
+
+time ansible-playbook -i inventory.yaml -c local playbook.yml --check $TAGS "${ARGS[@]}"
 
 echo Took $(($(date +%s) - $TS_START)) seconds
